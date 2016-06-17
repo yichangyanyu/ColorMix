@@ -100,14 +100,14 @@ public class MainActivityController {
             @Override
             public void onAnimationEnd(Animation animation) {
                 Random rand = new Random();
-                int textRand = rand.nextInt(50);
+                int textRand = rand.nextInt(100);
                 TranslateAnimation translateAnimation;
                 if (textRand % 2 == 0) {
                     translateAnimation = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, -5, Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, 0);
                 } else {
                     translateAnimation = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, 5, Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, 0);
                 }
-                translateAnimation.setDuration(200);
+                translateAnimation.setDuration(150);
                 translateAnimation.setFillAfter(true);
                 miv_ok.startAnimation(translateAnimation);
             }
