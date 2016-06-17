@@ -66,7 +66,6 @@ public class MainActivityController {
 
     private void clickAction(int type) {
         miv_ok.setVisibility(View.VISIBLE);
-        tran();
         if (type == 0) {
             if (beforeTextMessage == beforeColorMessage) {
                 mPb_fenshu.setProgress(mPb_fenshu.getProgress() + 1);
@@ -82,6 +81,7 @@ public class MainActivityController {
                 translateAnimation = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, -5, Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, 0);
             }
         }
+        tran();
         showTextMessgae();
     }
 
@@ -107,8 +107,6 @@ public class MainActivityController {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                Random rand = new Random();
-                int textRand = rand.nextInt(100);
                 translateAnimation.setDuration(150);
                 translateAnimation.setFillAfter(true);
                 miv_ok.startAnimation(translateAnimation);
