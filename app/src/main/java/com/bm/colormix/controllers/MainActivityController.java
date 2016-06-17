@@ -34,6 +34,8 @@ public class MainActivityController {
     private List<String> textMessage = new ArrayList<>();
     private List<Integer> colorMessage = new ArrayList<>();
 
+    private TranslateAnimation translateAnimation;
+
     public MainActivityController(Context context, TextView tv_color, ImageView iv_ok, ProgressBar pb_fenshu) {
         mContext = context;
         mtv_color = tv_color;
@@ -68,10 +70,16 @@ public class MainActivityController {
         if (type == 0) {
             if (beforeTextMessage == beforeColorMessage) {
                 mPb_fenshu.setProgress(mPb_fenshu.getProgress() + 1);
+                translateAnimation = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, 5, Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, 0);
+            } else {
+                translateAnimation = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, -5, Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, 0);
             }
         } else if (type == 1) {
             if (beforeTextMessage != beforeColorMessage) {
                 mPb_fenshu.setProgress(mPb_fenshu.getProgress() + 1);
+                translateAnimation = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, 5, Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, 0);
+            } else {
+                translateAnimation = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, -5, Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, 0);
             }
         }
         showTextMessgae();
@@ -101,12 +109,6 @@ public class MainActivityController {
             public void onAnimationEnd(Animation animation) {
                 Random rand = new Random();
                 int textRand = rand.nextInt(100);
-                TranslateAnimation translateAnimation;
-                if (textRand % 2 == 0) {
-                    translateAnimation = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, -5, Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, 0);
-                } else {
-                    translateAnimation = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, 5, Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, 0);
-                }
                 translateAnimation.setDuration(150);
                 translateAnimation.setFillAfter(true);
                 miv_ok.startAnimation(translateAnimation);
